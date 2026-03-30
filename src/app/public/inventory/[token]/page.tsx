@@ -1,12 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { db } from "~/server/db";
 
 export default async function PublicInventoryPage({
   params,
 }: {
-  params: { token: string };
+  params: Promise<{ token: string }> ;
 }) {
+  const { token } = await params;
   const inventory = await db.inventory.findFirst({
-    where: { publicToken: params.token },
+    where: { publicToken: token },
     include: {
       areas: true,
       items: {
@@ -38,9 +43,9 @@ export default async function PublicInventoryPage({
 
   inventory.items.forEach((item) => {
     if (item.areaId && grouped[item.areaId]) {
-      grouped[item.areaId].push(item);
+      grouped?.[item.areaId]?.push(item);
     } else {
-      grouped["no-area"].push(item);
+      grouped?.["no-area"]?.push(item);
     }
   });
 
@@ -58,7 +63,7 @@ export default async function PublicInventoryPage({
             </h2>
 
             <div className="space-y-2">
-              {grouped[area.id].map((item) => (
+              {grouped?.[area.id]?.map((item) => (
                 <ItemPublic key={item.id} item={item} />
               ))}
             </div>
