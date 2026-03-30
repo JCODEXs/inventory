@@ -6,9 +6,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   _req: Request,
-  { params }: { params: { token: string } }
+  { params }: { params: Promise<{ token: string }> }
 ) {
-  const { token } = params;
+    const { token } = await params;
   const inventory = await db.inventory.findFirst({
     where: {
       publicToken: token,
