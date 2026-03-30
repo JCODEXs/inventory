@@ -12,6 +12,7 @@ export default async function Home() {
           
           {/* Header con Estilo Minimalista */}
           <div className="text-center space-y-4">
+            <img src="/logo.png" alt="Logo" className="h-20 w-auto mx-auto" />
             <h1 className="text-4xl font-light tracking-tight text-gray-900 sm:text-6xl">
               Gestión de <span className="font-semibold text-blue-600">Inventario</span>
             </h1>
