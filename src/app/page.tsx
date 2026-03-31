@@ -24,17 +24,30 @@ export default async function Home() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 max-w-md w-full">
             {/* Ruta Protegida: Inventario */}
             {session ? (
-              <Link
-                className="group flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:shadow-md hover:border-blue-100"
-                href="/inventory"
-              >
-                <h3 className="text-xl font-medium group-hover:text-blue-600 transition-colors">
-                  Acceder al Inventario →
-                </h3>
-                <p className="text-gray-500 text-sm">
-                  Gestiona tus productos, áreas y préstamos de forma centralizada.
-                </p>
-              </Link>
+              <div className="flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:shadow-md hover:border-blue-100">
+                <Link
+                  className="group flex flex-col gap-3 rounded-2xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:shadow-md hover:border-blue-100"
+                  href="/inventory"
+                >
+                  <h3 className="text-xl font-medium group-hover:text-blue-600 transition-colors">
+                    Acceder a los Inventarios →
+                  </h3>
+                  <p className="text-gray-500 text-sm">
+                    Gestiona tus productos, áreas y préstamos de forma centralizada.
+                  </p>
+                </Link>
+                <Link
+                  className="group flex flex-row gap-3 items-center justify-center flex-wrap  rounded-2xl bg-white p-8 shadow-sm transition-all"
+                  href="/instructions"
+                >
+                  <h3 className="text-xl font-medium group-hover:text-blue-600 transition-colors">
+                    Ver Funcionamiento e instrucciones
+                  </h3>
+                  {/* <p className="text-gray-500 text-sm">
+                    Gestiona tus productos, áreas y préstamos de forma centralizada.
+                  </p> */}
+                </Link>
+              </div>
             ) : (
               <div className="flex flex-col gap-3 rounded-2xl border border-dashed border-gray-200 bg-gray-50/50 p-8 opacity-60">
                 <h3 className="text-xl font-medium text-gray-400">

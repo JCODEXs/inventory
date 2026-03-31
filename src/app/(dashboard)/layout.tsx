@@ -19,12 +19,12 @@ export default async function InventoryLayout({
       {/* Aquí podrías añadir un Sidebar o Navbar minimalista solo para el inventario */}
       <nav className="border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
+          {/* <div className="flex justify-between h-16 items-center">
             <span className="text-sm font-medium text-gray-500">Panel de Control</span>
             <div className="flex items-center gap-4">
               <span className="text-xs text-gray-400">{session.user.email}</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </nav>
 

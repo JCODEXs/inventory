@@ -121,7 +121,7 @@ export function SignInPage() {
               className={`flex-1 rounded-lg py-2 text-xs font-semibold transition-all ${
                 tab === t ? "bg-amber-500 text-white" : "text-gray-500 hover:text-gray-300"
               }`}>
-              {t === "credentials" ? "🔐 Contraseña" : "✉️ Magic link"}
+              {t === "credentials" ? "Contraseña" : "Magic link"}
             </button>
           ))}
         </div>
@@ -163,7 +163,7 @@ export function SignInPage() {
         <p className="mt-4 text-center text-sm text-gray-600">
           ¿Sin cuenta?{" "}
           <Link href="/auth/register" className="text-amber-400 hover:text-amber-300 font-semibold">
-            Regístrate
+            Regístrate aquí
           </Link>
         </p>
       </div>
