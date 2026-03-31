@@ -1,13 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 "use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { api } from "~/trpc/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { InventoryQR } from "./InventoryQR";
+import { sileo } from "sileo";
 
 // =========================
 // Types
@@ -55,8 +57,18 @@ function ModalWrapper({ children, onClose, title }: { children: React.ReactNode;
 // =========================
 export default function InventoriesPage() {
   const [open, setOpen] = useState(false);
-  const { data, isLoading } = api.inventory.getAll.useQuery();
+const { data, isLoading, isError, error,  } = api.inventory.getAll.useQuery();
 
+useEffect(() => {
+  if (isLoading) {
+    // Muestra el estado de carga (si tu librería sileo tiene un método para ello)
+    sileo.info({ title: "Cargando inventario..." });
+  } else if (isError) {
+    sileo.error({ title: "Error al cargar", description: error.message });
+  } else if (data) {
+    sileo.success({ title: "Inventario cargado correctamente" });
+  }
+}, [isLoading, isError, data, error]);
   return (
     <div className="max-w-3xl mx-auto px-4 py-16 space-y-10 min-h-screen bg-[#f9fafb]">
       {/* Header */}

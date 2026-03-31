@@ -49,6 +49,24 @@ export const itemService = {
       }
     });
   },
+  async delete(userId: string, itemId: string) {
+    const item = await db.item.findFirst({
+      where: {
+        id: itemId,
+        inventory: {
+          userId
+        }
+      }
+    });
+
+    if (!item) {
+      throw new Error("Item not found or unauthorized");
+    }
+
+    return db.item.delete({
+      where: { id: itemId }
+    });
+  },
 
   async getStatus(userId: string, inventoryId: string) {
     const items = await this.getByInventory(userId, inventoryId);

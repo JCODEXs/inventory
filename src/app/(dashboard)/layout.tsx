@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "~/server/auth";
+import { Toaster } from "sileo";
 
 export default async function InventoryLayout({
   children,
@@ -28,6 +29,7 @@ export default async function InventoryLayout({
       </nav>
 
       <main className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+        <Toaster position="top-center" />
         {children}
       </main>
     </div>

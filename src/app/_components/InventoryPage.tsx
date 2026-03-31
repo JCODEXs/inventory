@@ -8,7 +8,7 @@
 
 import { useState, useRef } from "react";
 import { api } from "~/trpc/react";
-// 1. IMPORTAR FRAMER MOTION
+import {sileo} from "sileo";
 import { motion, AnimatePresence } from "framer-motion";
 
 // =========================
@@ -184,10 +184,25 @@ function AreaSection({ title, items, onLoan }: { title: string; items: ItemVM[];
     </section>
   );
 }
+sileo.success({ title: "Item Eliminado" });
+sileo.success({ title: "Item  Prestado" });
+sileo.success({ title: "Item Creado" });
+
+// sileo.error({
+//   title: "Something went wrong",
+//   description: "Please try again later.",
+// });
+
+// sileo.warning({ title: "Storage almost full" });
+
+// sileo.info({ title: "New update available" });
 
 function ItemCard({ item, onLoan }: { item: ItemVM; onLoan: (id: string) => void }) {
   const utils = api.useUtils();
+  const deleteItem = api.item.delete.useMutation({ onSettled: () => utils.item.getByInventory.invalidate(), });
   const returnMutation = api.loan.returnItem.useMutation({ onSettled: () => utils.item.getByInventory.invalidate(), });
+
+  
   return (
     <div className="bg-white border border-gray-100 p-5 rounded-2xl flex justify-between items-center shadow-sm hover:shadow-md transition-shadow group">
       <div className="space-y-1">
@@ -200,10 +215,12 @@ function ItemCard({ item, onLoan }: { item: ItemVM; onLoan: (id: string) => void
       <div className="flex flex-col items-end gap-2">
         <span className={`text-[10px] font-bold uppercase tracking-tighter ${item.isLoaned ? "text-amber-500" : "text-emerald-500"}`}>{item.statusLabel}</span>
         {item.isLoaned ? (
-          <button onClick={() => returnMutation.mutate({ loanId: item.activeLoan!.id })} className="text-xs text-red-500 hover:underline font-medium">Devolver</button>
+          <button onClick={() => { sileo.success({ title: "Item Devuelto" }); returnMutation.mutate({ loanId: item.activeLoan!.id })}} className="text-xs text-red-500 hover:underline font-medium">Devolver</button>
         ) : (
-          <button onClick={() => onLoan(item.id)} className="text-xs text-blue-600 hover:underline font-medium">Prestar</button>
+          <button onClick={() => { sileo.success({ title: "Item Prestado" }); onLoan(item.id)}} className="text-xs text-blue-600 hover:underline font-medium">Prestar</button>
         )}
+
+        <button onClick={() => {sileo.success({ title: "Item Eliminado" }); deleteItem.mutate({ itemId: item.id })}} className="text-xs text-red-500 hover:underline font-medium">Eliminar</button>
       </div>
     </div>
   );
@@ -211,7 +228,15 @@ function ItemCard({ item, onLoan }: { item: ItemVM; onLoan: (id: string) => void
 
 function CreateItemContent({ inventoryId, areas, onClose }: { inventoryId: string, areas: Area[], onClose: () => void }) {
   const [name, setName] = useState(""); const [areaId, setAreaId] = useState(""); const [amount, setAmount] = useState(1); const utils = api.useUtils();
-  const create = api.item.create.useMutation({ onSettled: () => { utils.item.getByInventory.invalidate(); onClose(); } });
+  const create = api.item.create.useMutation({ onSettled: () => { utils.item.getByInventory.invalidate(); } });
+
+  const handleSubmit = () => {
+    
+    sileo.success({ title: "Item Creado" });
+    create.mutate({ name, inventoryId, areaId: areaId || undefined, amount });
+    onClose();
+  };
+
   return (
     <div className="space-y-4">
       <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre del objeto" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
@@ -220,30 +245,40 @@ function CreateItemContent({ inventoryId, areas, onClose }: { inventoryId: strin
         <option value="">Sin área específica</option>
         {areas.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
       </select>
-      <button onClick={() => create.mutate({ name, inventoryId, areaId: areaId || undefined, amount })} className="w-full bg-gray-900 text-white py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors">Guardar Item</button>
+      <button onClick={handleSubmit} className="w-full bg-gray-900 text-white py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors">Guardar Item</button>
     </div>
   );
 }
 
 function CreateAreaContent({ inventoryId, onClose }: { inventoryId: string, onClose: () => void }) {
   const [name, setName] = useState(""); const utils = api.useUtils();
-  const create = api.area.create.useMutation({ onSettled: () => { utils.area.getByInventory.invalidate(); onClose(); } });
+  const create = api.area.create.useMutation({ onSettled: () => { utils.area.getByInventory.invalidate();} });
+  const handleSubmit = () => {
+    sileo.success({ title: "Área Creada" });
+    create.mutate({ name, inventoryId });
+    onClose();
+  };
   return (
     <div className="space-y-4">
       <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Ej: Oficina, Almacén..." className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
-      <button onClick={() => create.mutate({ name, inventoryId })} className="w-full bg-gray-900 text-white py-3 rounded-xl text-sm font-medium">Crear Área</button>
+      <button onClick={handleSubmit} className="w-full bg-gray-900 text-white py-3 rounded-xl text-sm font-medium">Crear Área</button>
     </div>
   );
 }
 
 function LoanContent({ itemId, onClose, inventoryId }: { itemId: string, onClose: () => void, inventoryId: string }) {
   const [name, setName] = useState(""); const utils = api.useUtils();
-  const loan = api.loan.create.useMutation({ onSettled: () => { utils.item.getByInventory.invalidate(); onClose(); } });
+  const loan = api.loan.create.useMutation({ onSettled: () => { utils.item.getByInventory.invalidate() } });
+  const handleSubmit = () => {
+    loan.mutate({ itemId, borrowerName: name });
+    sileo.success({ title: "Item Prestado" });
+    onClose();
+  };
   return (
     <div className="space-y-4">
       <p className="text-xs text-gray-400">Indica quién se lleva este recurso.</p>
       <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre del responsable" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
-      <button onClick={() => loan.mutate({ itemId, borrowerName: name })} className="w-full bg-blue-600 text-white py-3 rounded-xl text-sm font-medium">Confirmar Préstamo</button>
+      <button onClick={handleSubmit} className="w-full bg-blue-600 text-white py-3 rounded-xl text-sm font-medium">Confirmar Préstamo</button>
     </div>
   );
 }

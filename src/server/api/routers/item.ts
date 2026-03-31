@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 import { itemService } from "~/server/services/item.service";
@@ -37,6 +38,17 @@ export const itemRouter = createTRPCRouter({
         ctx.session.user.id,
         input.inventoryId
       );
-    })
+    }),
+    
+      delete: protectedProcedure
+    .input(z.object({ itemId: z.string().cuid() }))
+    .mutation(async ({ ctx, input }) => {
+      try {
+        await itemService.delete(ctx.session.user.id, input.itemId)
+        return { success: true }
+      } catch (e) {
+        throw new TRPCError({ code: "NOT_FOUND", message: (e as Error).message })
+      }
+    }),
 
 });
