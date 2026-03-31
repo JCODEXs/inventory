@@ -144,6 +144,7 @@ exports.Prisma.ItemScalarFieldEnum = {
   amount: 'amount',
   manualUrl: 'manualUrl',
   createdAt: 'createdAt',
+  price: 'price',
   inventoryId: 'inventoryId',
   areaId: 'areaId'
 };
@@ -187,7 +188,8 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   email: 'email',
   emailVerified: 'emailVerified',
-  image: 'image'
+  image: 'image',
+  passwordHash: 'passwordHash'
 };
 
 exports.Prisma.VerificationTokenScalarFieldEnum = {

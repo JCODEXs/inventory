@@ -49,6 +49,7 @@ model Item {
   amount      Int?     @default(1)
   manualUrl   String?
   createdAt   DateTime @default(now())
+  price       Float?
 
   inventoryId String
   inventory   Inventory @relation(fields: [inventoryId], references: [id])
@@ -113,6 +114,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   inventories   Inventory[]
+  passwordHash  String?
 }
 
 model VerificationToken {

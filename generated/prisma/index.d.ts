@@ -3866,10 +3866,12 @@ export namespace Prisma {
 
   export type ItemAvgAggregateOutputType = {
     amount: number | null
+    price: number | null
   }
 
   export type ItemSumAggregateOutputType = {
     amount: number | null
+    price: number | null
   }
 
   export type ItemMinAggregateOutputType = {
@@ -3879,6 +3881,7 @@ export namespace Prisma {
     amount: number | null
     manualUrl: string | null
     createdAt: Date | null
+    price: number | null
     inventoryId: string | null
     areaId: string | null
   }
@@ -3890,6 +3893,7 @@ export namespace Prisma {
     amount: number | null
     manualUrl: string | null
     createdAt: Date | null
+    price: number | null
     inventoryId: string | null
     areaId: string | null
   }
@@ -3901,6 +3905,7 @@ export namespace Prisma {
     amount: number
     manualUrl: number
     createdAt: number
+    price: number
     inventoryId: number
     areaId: number
     _all: number
@@ -3909,10 +3914,12 @@ export namespace Prisma {
 
   export type ItemAvgAggregateInputType = {
     amount?: true
+    price?: true
   }
 
   export type ItemSumAggregateInputType = {
     amount?: true
+    price?: true
   }
 
   export type ItemMinAggregateInputType = {
@@ -3922,6 +3929,7 @@ export namespace Prisma {
     amount?: true
     manualUrl?: true
     createdAt?: true
+    price?: true
     inventoryId?: true
     areaId?: true
   }
@@ -3933,6 +3941,7 @@ export namespace Prisma {
     amount?: true
     manualUrl?: true
     createdAt?: true
+    price?: true
     inventoryId?: true
     areaId?: true
   }
@@ -3944,6 +3953,7 @@ export namespace Prisma {
     amount?: true
     manualUrl?: true
     createdAt?: true
+    price?: true
     inventoryId?: true
     areaId?: true
     _all?: true
@@ -4042,6 +4052,7 @@ export namespace Prisma {
     amount: number | null
     manualUrl: string | null
     createdAt: Date
+    price: number | null
     inventoryId: string
     areaId: string | null
     _count: ItemCountAggregateOutputType | null
@@ -4072,6 +4083,7 @@ export namespace Prisma {
     amount?: boolean
     manualUrl?: boolean
     createdAt?: boolean
+    price?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4087,6 +4099,7 @@ export namespace Prisma {
     amount?: boolean
     manualUrl?: boolean
     createdAt?: boolean
+    price?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4100,6 +4113,7 @@ export namespace Prisma {
     amount?: boolean
     manualUrl?: boolean
     createdAt?: boolean
+    price?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4113,11 +4127,12 @@ export namespace Prisma {
     amount?: boolean
     manualUrl?: boolean
     createdAt?: boolean
+    price?: boolean
     inventoryId?: boolean
     areaId?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "amount" | "manualUrl" | "createdAt" | "inventoryId" | "areaId", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "amount" | "manualUrl" | "createdAt" | "price" | "inventoryId" | "areaId", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
     loans?: boolean | Item$loansArgs<ExtArgs>
@@ -4147,6 +4162,7 @@ export namespace Prisma {
       amount: number | null
       manualUrl: string | null
       createdAt: Date
+      price: number | null
       inventoryId: string
       areaId: string | null
     }, ExtArgs["result"]["item"]>
@@ -4581,6 +4597,7 @@ export namespace Prisma {
     readonly amount: FieldRef<"Item", 'Int'>
     readonly manualUrl: FieldRef<"Item", 'String'>
     readonly createdAt: FieldRef<"Item", 'DateTime'>
+    readonly price: FieldRef<"Item", 'Float'>
     readonly inventoryId: FieldRef<"Item", 'String'>
     readonly areaId: FieldRef<"Item", 'String'>
   }
@@ -8398,6 +8415,7 @@ export namespace Prisma {
     email: string | null
     emailVerified: Date | null
     image: string | null
+    passwordHash: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -8406,6 +8424,7 @@ export namespace Prisma {
     email: string | null
     emailVerified: Date | null
     image: string | null
+    passwordHash: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -8414,6 +8433,7 @@ export namespace Prisma {
     email: number
     emailVerified: number
     image: number
+    passwordHash: number
     _all: number
   }
 
@@ -8424,6 +8444,7 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    passwordHash?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -8432,6 +8453,7 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    passwordHash?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -8440,6 +8462,7 @@ export namespace Prisma {
     email?: true
     emailVerified?: true
     image?: true
+    passwordHash?: true
     _all?: true
   }
 
@@ -8521,6 +8544,7 @@ export namespace Prisma {
     email: string | null
     emailVerified: Date | null
     image: string | null
+    passwordHash: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -8546,6 +8570,7 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    passwordHash?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     inventories?: boolean | User$inventoriesArgs<ExtArgs>
@@ -8558,6 +8583,7 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    passwordHash?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8566,6 +8592,7 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    passwordHash?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -8574,9 +8601,10 @@ export namespace Prisma {
     email?: boolean
     emailVerified?: boolean
     image?: boolean
+    passwordHash?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "passwordHash", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -8599,6 +8627,7 @@ export namespace Prisma {
       email: string | null
       emailVerified: Date | null
       image: string | null
+      passwordHash: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -9030,6 +9059,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
+    readonly passwordHash: FieldRef<"User", 'String'>
   }
     
 
@@ -10520,6 +10550,7 @@ export namespace Prisma {
     amount: 'amount',
     manualUrl: 'manualUrl',
     createdAt: 'createdAt',
+    price: 'price',
     inventoryId: 'inventoryId',
     areaId: 'areaId'
   };
@@ -10575,7 +10606,8 @@ export namespace Prisma {
     name: 'name',
     email: 'email',
     emailVerified: 'emailVerified',
-    image: 'image'
+    image: 'image',
+    passwordHash: 'passwordHash'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -10662,13 +10694,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -10679,6 +10704,13 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -10814,6 +10846,7 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
+    price?: FloatNullableFilter<"Item"> | number | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
     inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
@@ -10828,6 +10861,7 @@ export namespace Prisma {
     amount?: SortOrderInput | SortOrder
     manualUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    price?: SortOrderInput | SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrderInput | SortOrder
     inventory?: InventoryOrderByWithRelationInput
@@ -10845,6 +10879,7 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
+    price?: FloatNullableFilter<"Item"> | number | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
     inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
@@ -10859,6 +10894,7 @@ export namespace Prisma {
     amount?: SortOrderInput | SortOrder
     manualUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    price?: SortOrderInput | SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrderInput | SortOrder
     _count?: ItemCountOrderByAggregateInput
@@ -10878,6 +10914,7 @@ export namespace Prisma {
     amount?: IntNullableWithAggregatesFilter<"Item"> | number | null
     manualUrl?: StringNullableWithAggregatesFilter<"Item"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Item"> | Date | string
+    price?: FloatNullableWithAggregatesFilter<"Item"> | number | null
     inventoryId?: StringWithAggregatesFilter<"Item"> | string
     areaId?: StringNullableWithAggregatesFilter<"Item"> | string | null
   }
@@ -11109,6 +11146,7 @@ export namespace Prisma {
     email?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    passwordHash?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     inventories?: InventoryListRelationFilter
@@ -11120,6 +11158,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
     inventories?: InventoryOrderByRelationAggregateInput
@@ -11134,6 +11173,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
+    passwordHash?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
     sessions?: SessionListRelationFilter
     inventories?: InventoryListRelationFilter
@@ -11145,6 +11185,7 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
+    passwordHash?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -11159,6 +11200,7 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
+    passwordHash?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type VerificationTokenWhereInput = {
@@ -11333,6 +11375,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     loans?: LoanCreateNestedManyWithoutItemInput
     area?: AreaCreateNestedOneWithoutItemsInput
@@ -11345,6 +11388,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventoryId: string
     areaId?: string | null
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
@@ -11357,6 +11401,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     loans?: LoanUpdateManyWithoutItemNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
@@ -11369,6 +11414,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
@@ -11381,6 +11427,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventoryId: string
     areaId?: string | null
   }
@@ -11392,6 +11439,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
   }
 
   export type ItemUncheckedUpdateManyInput = {
@@ -11401,6 +11449,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -11646,6 +11695,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
     inventories?: InventoryCreateNestedManyWithoutUserInput
@@ -11657,6 +11707,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     inventories?: InventoryUncheckedCreateNestedManyWithoutUserInput
@@ -11668,6 +11719,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
     inventories?: InventoryUpdateManyWithoutUserNestedInput
@@ -11679,6 +11731,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     inventories?: InventoryUncheckedUpdateManyWithoutUserNestedInput
@@ -11690,6 +11743,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -11698,6 +11752,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -11706,6 +11761,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type VerificationTokenCreateInput = {
@@ -11935,6 +11991,17 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type LoanListRelationFilter = {
     every?: LoanWhereInput
     some?: LoanWhereInput
@@ -11957,12 +12024,14 @@ export namespace Prisma {
     amount?: SortOrder
     manualUrl?: SortOrder
     createdAt?: SortOrder
+    price?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
     amount?: SortOrder
+    price?: SortOrder
   }
 
   export type ItemMaxOrderByAggregateInput = {
@@ -11972,6 +12041,7 @@ export namespace Prisma {
     amount?: SortOrder
     manualUrl?: SortOrder
     createdAt?: SortOrder
+    price?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
@@ -11983,12 +12053,14 @@ export namespace Prisma {
     amount?: SortOrder
     manualUrl?: SortOrder
     createdAt?: SortOrder
+    price?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
     amount?: SortOrder
+    price?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12005,6 +12077,22 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -12203,6 +12291,7 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    passwordHash?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -12211,6 +12300,7 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    passwordHash?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -12219,6 +12309,7 @@ export namespace Prisma {
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
+    passwordHash?: SortOrder
   }
 
   export type VerificationTokenIdentifierTokenCompoundUniqueInput = {
@@ -12437,6 +12528,14 @@ export namespace Prisma {
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
@@ -12775,6 +12874,17 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -12791,7 +12901,7 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -12799,7 +12909,12 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -12846,6 +12961,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
@@ -12856,6 +12972,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
@@ -12872,6 +12989,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     loans?: LoanCreateNestedManyWithoutItemInput
     area?: AreaCreateNestedOneWithoutItemsInput
   }
@@ -12883,6 +13001,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     areaId?: string | null
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
   }
@@ -12938,6 +13057,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
@@ -12948,6 +13068,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -12978,6 +13099,7 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
+    price?: FloatNullableFilter<"Item"> | number | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
   }
@@ -13040,6 +13162,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     loans?: LoanCreateNestedManyWithoutItemInput
   }
@@ -13051,6 +13174,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventoryId: string
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
   }
@@ -13279,6 +13403,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     area?: AreaCreateNestedOneWithoutItemsInput
   }
@@ -13290,6 +13415,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventoryId: string
     areaId?: string | null
   }
@@ -13317,6 +13443,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
   }
@@ -13328,6 +13455,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -13338,6 +13466,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     sessions?: SessionCreateNestedManyWithoutUserInput
     inventories?: InventoryCreateNestedManyWithoutUserInput
   }
@@ -13348,6 +13477,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     inventories?: InventoryUncheckedCreateNestedManyWithoutUserInput
   }
@@ -13374,6 +13504,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUpdateManyWithoutUserNestedInput
     inventories?: InventoryUpdateManyWithoutUserNestedInput
   }
@@ -13384,6 +13515,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     inventories?: InventoryUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -13394,6 +13526,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
     inventories?: InventoryCreateNestedManyWithoutUserInput
   }
@@ -13404,6 +13537,7 @@ export namespace Prisma {
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
+    passwordHash?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     inventories?: InventoryUncheckedCreateNestedManyWithoutUserInput
   }
@@ -13430,6 +13564,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
     inventories?: InventoryUpdateManyWithoutUserNestedInput
   }
@@ -13440,6 +13575,7 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
+    passwordHash?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     inventories?: InventoryUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -13632,6 +13768,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     areaId?: string | null
   }
 
@@ -13648,6 +13785,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     loans?: LoanUpdateManyWithoutItemNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
   }
@@ -13659,6 +13797,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
   }
@@ -13670,6 +13809,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -13700,6 +13840,7 @@ export namespace Prisma {
     amount?: number | null
     manualUrl?: string | null
     createdAt?: Date | string
+    price?: number | null
     inventoryId: string
   }
 
@@ -13710,6 +13851,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     loans?: LoanUpdateManyWithoutItemNestedInput
   }
@@ -13721,6 +13863,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
   }
@@ -13732,6 +13875,7 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    price?: NullableFloatFieldUpdateOperationsInput | number | null
     inventoryId?: StringFieldUpdateOperationsInput | string
   }
 

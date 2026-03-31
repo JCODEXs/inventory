@@ -184,9 +184,8 @@ function AreaSection({ title, items, onLoan }: { title: string; items: ItemVM[];
     </section>
   );
 }
-sileo.success({ title: "Item Eliminado" });
-sileo.success({ title: "Item  Prestado" });
-sileo.success({ title: "Item Creado" });
+sileo.info({ title: "Cargando inventario..." });
+
 
 // sileo.error({
 //   title: "Something went wrong",
