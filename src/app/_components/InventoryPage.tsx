@@ -16,8 +16,8 @@ import { motion, AnimatePresence } from "framer-motion";
 // =========================
 type Loan = { id: string; borrowerName: string; borrowerContact?: string | null; startDate: Date; returned: boolean; };
 type Area = { id: string; name: string; createdAt?: Date; inventoryId?: string; };
-type ItemRaw = { id: string; name: string; description?: string | null; areaId?: string | null; loans: Loan[]; amount: number | null; price:number; providerName: string; providerNumber: string ; };
-type ItemVM = { id: string; name: string; description?: string | null; isLoaned: boolean; activeLoan?: Loan; statusLabel: "Disponible" | "Prestado"; areaId: string | null; amount: number; price:number; providerName: string; providerNumber: string ; };
+type ItemRaw = { id: string; name: string; description?: string | null; areaId?: string | null; loans: Loan[]; amount: number | null; price:number|null ; providerName: string|null; providerNumber: string|null ; };
+type ItemVM = { id: string; name: string; description?: string | null; isLoaned: boolean; activeLoan?: Loan; statusLabel: "Disponible" | "Prestado"; areaId: string | null; amount: number; price:number|null; providerName: string|null; providerNumber: string|null ; };
 
 // =========================
 // Mapper (Mantenido igual)
