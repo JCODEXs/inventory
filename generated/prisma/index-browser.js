@@ -145,6 +145,8 @@ exports.Prisma.ItemScalarFieldEnum = {
   manualUrl: 'manualUrl',
   createdAt: 'createdAt',
   price: 'price',
+  providerNumber: 'providerNumber',
+  providerName: 'providerName',
   inventoryId: 'inventoryId',
   areaId: 'areaId'
 };

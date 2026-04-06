@@ -48,10 +48,13 @@ model Item {
   amount      Int? @default(1)
   manualUrl   String?
   createdAt   DateTime @default(now())
-  price       Float? 
+  price       Int? 
+  providerNumber    String?
+  providerName String?
 
   inventoryId String
   inventory   Inventory @relation(fields: [inventoryId], references: [id])
+
 
   loans Loan[]
   areaId String?
@@ -102,6 +105,9 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    
+
+    @@index([userId])
 }
 
 model User {

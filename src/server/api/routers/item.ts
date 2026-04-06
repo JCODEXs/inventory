@@ -12,7 +12,11 @@ export const itemRouter = createTRPCRouter({
       description: z.string().optional(),
       manualUrl: z.string().optional(),
       amount: z.number().optional(),
-      areaId: z.string().optional()
+      areaId: z.string().optional(),
+      price: z.number().optional(),
+      providerName: z.string().optional(),
+      providerNumber: z.string().optional(),
+
     }))
     .mutation(({ ctx, input }) => {
       return itemService.create(ctx.session.user.id, input);

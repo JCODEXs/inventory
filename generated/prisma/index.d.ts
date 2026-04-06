@@ -3882,6 +3882,8 @@ export namespace Prisma {
     manualUrl: string | null
     createdAt: Date | null
     price: number | null
+    providerNumber: string | null
+    providerName: string | null
     inventoryId: string | null
     areaId: string | null
   }
@@ -3894,6 +3896,8 @@ export namespace Prisma {
     manualUrl: string | null
     createdAt: Date | null
     price: number | null
+    providerNumber: string | null
+    providerName: string | null
     inventoryId: string | null
     areaId: string | null
   }
@@ -3906,6 +3910,8 @@ export namespace Prisma {
     manualUrl: number
     createdAt: number
     price: number
+    providerNumber: number
+    providerName: number
     inventoryId: number
     areaId: number
     _all: number
@@ -3930,6 +3936,8 @@ export namespace Prisma {
     manualUrl?: true
     createdAt?: true
     price?: true
+    providerNumber?: true
+    providerName?: true
     inventoryId?: true
     areaId?: true
   }
@@ -3942,6 +3950,8 @@ export namespace Prisma {
     manualUrl?: true
     createdAt?: true
     price?: true
+    providerNumber?: true
+    providerName?: true
     inventoryId?: true
     areaId?: true
   }
@@ -3954,6 +3964,8 @@ export namespace Prisma {
     manualUrl?: true
     createdAt?: true
     price?: true
+    providerNumber?: true
+    providerName?: true
     inventoryId?: true
     areaId?: true
     _all?: true
@@ -4053,6 +4065,8 @@ export namespace Prisma {
     manualUrl: string | null
     createdAt: Date
     price: number | null
+    providerNumber: string | null
+    providerName: string | null
     inventoryId: string
     areaId: string | null
     _count: ItemCountAggregateOutputType | null
@@ -4084,6 +4098,8 @@ export namespace Prisma {
     manualUrl?: boolean
     createdAt?: boolean
     price?: boolean
+    providerNumber?: boolean
+    providerName?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4100,6 +4116,8 @@ export namespace Prisma {
     manualUrl?: boolean
     createdAt?: boolean
     price?: boolean
+    providerNumber?: boolean
+    providerName?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4114,6 +4132,8 @@ export namespace Prisma {
     manualUrl?: boolean
     createdAt?: boolean
     price?: boolean
+    providerNumber?: boolean
+    providerName?: boolean
     inventoryId?: boolean
     areaId?: boolean
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
@@ -4128,11 +4148,13 @@ export namespace Prisma {
     manualUrl?: boolean
     createdAt?: boolean
     price?: boolean
+    providerNumber?: boolean
+    providerName?: boolean
     inventoryId?: boolean
     areaId?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "amount" | "manualUrl" | "createdAt" | "price" | "inventoryId" | "areaId", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "amount" | "manualUrl" | "createdAt" | "price" | "providerNumber" | "providerName" | "inventoryId" | "areaId", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     inventory?: boolean | InventoryDefaultArgs<ExtArgs>
     loans?: boolean | Item$loansArgs<ExtArgs>
@@ -4163,6 +4185,8 @@ export namespace Prisma {
       manualUrl: string | null
       createdAt: Date
       price: number | null
+      providerNumber: string | null
+      providerName: string | null
       inventoryId: string
       areaId: string | null
     }, ExtArgs["result"]["item"]>
@@ -4597,7 +4621,9 @@ export namespace Prisma {
     readonly amount: FieldRef<"Item", 'Int'>
     readonly manualUrl: FieldRef<"Item", 'String'>
     readonly createdAt: FieldRef<"Item", 'DateTime'>
-    readonly price: FieldRef<"Item", 'Float'>
+    readonly price: FieldRef<"Item", 'Int'>
+    readonly providerNumber: FieldRef<"Item", 'String'>
+    readonly providerName: FieldRef<"Item", 'String'>
     readonly inventoryId: FieldRef<"Item", 'String'>
     readonly areaId: FieldRef<"Item", 'String'>
   }
@@ -10551,6 +10577,8 @@ export namespace Prisma {
     manualUrl: 'manualUrl',
     createdAt: 'createdAt',
     price: 'price',
+    providerNumber: 'providerNumber',
+    providerName: 'providerName',
     inventoryId: 'inventoryId',
     areaId: 'areaId'
   };
@@ -10694,6 +10722,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -10704,13 +10739,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -10846,7 +10874,9 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
-    price?: FloatNullableFilter<"Item"> | number | null
+    price?: IntNullableFilter<"Item"> | number | null
+    providerNumber?: StringNullableFilter<"Item"> | string | null
+    providerName?: StringNullableFilter<"Item"> | string | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
     inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
@@ -10862,6 +10892,8 @@ export namespace Prisma {
     manualUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     price?: SortOrderInput | SortOrder
+    providerNumber?: SortOrderInput | SortOrder
+    providerName?: SortOrderInput | SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrderInput | SortOrder
     inventory?: InventoryOrderByWithRelationInput
@@ -10879,7 +10911,9 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
-    price?: FloatNullableFilter<"Item"> | number | null
+    price?: IntNullableFilter<"Item"> | number | null
+    providerNumber?: StringNullableFilter<"Item"> | string | null
+    providerName?: StringNullableFilter<"Item"> | string | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
     inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
@@ -10895,6 +10929,8 @@ export namespace Prisma {
     manualUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     price?: SortOrderInput | SortOrder
+    providerNumber?: SortOrderInput | SortOrder
+    providerName?: SortOrderInput | SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrderInput | SortOrder
     _count?: ItemCountOrderByAggregateInput
@@ -10914,7 +10950,9 @@ export namespace Prisma {
     amount?: IntNullableWithAggregatesFilter<"Item"> | number | null
     manualUrl?: StringNullableWithAggregatesFilter<"Item"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Item"> | Date | string
-    price?: FloatNullableWithAggregatesFilter<"Item"> | number | null
+    price?: IntNullableWithAggregatesFilter<"Item"> | number | null
+    providerNumber?: StringNullableWithAggregatesFilter<"Item"> | string | null
+    providerName?: StringNullableWithAggregatesFilter<"Item"> | string | null
     inventoryId?: StringWithAggregatesFilter<"Item"> | string
     areaId?: StringNullableWithAggregatesFilter<"Item"> | string | null
   }
@@ -11376,6 +11414,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     loans?: LoanCreateNestedManyWithoutItemInput
     area?: AreaCreateNestedOneWithoutItemsInput
@@ -11389,6 +11429,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventoryId: string
     areaId?: string | null
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
@@ -11401,7 +11443,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     loans?: LoanUpdateManyWithoutItemNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
@@ -11414,7 +11458,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
@@ -11428,6 +11474,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventoryId: string
     areaId?: string | null
   }
@@ -11439,7 +11487,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ItemUncheckedUpdateManyInput = {
@@ -11449,7 +11499,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -11991,17 +12043,6 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type LoanListRelationFilter = {
     every?: LoanWhereInput
     some?: LoanWhereInput
@@ -12025,6 +12066,8 @@ export namespace Prisma {
     manualUrl?: SortOrder
     createdAt?: SortOrder
     price?: SortOrder
+    providerNumber?: SortOrder
+    providerName?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
@@ -12042,6 +12085,8 @@ export namespace Prisma {
     manualUrl?: SortOrder
     createdAt?: SortOrder
     price?: SortOrder
+    providerNumber?: SortOrder
+    providerName?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
@@ -12054,6 +12099,8 @@ export namespace Prisma {
     manualUrl?: SortOrder
     createdAt?: SortOrder
     price?: SortOrder
+    providerNumber?: SortOrder
+    providerName?: SortOrder
     inventoryId?: SortOrder
     areaId?: SortOrder
   }
@@ -12077,22 +12124,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -12535,14 +12566,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type InventoryUpdateOneRequiredWithoutItemsNestedInput = {
     create?: XOR<InventoryCreateWithoutItemsInput, InventoryUncheckedCreateWithoutItemsInput>
     connectOrCreate?: InventoryCreateOrConnectWithoutItemsInput
@@ -12874,17 +12897,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -12901,7 +12913,7 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel> | null
     in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
     notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
@@ -12909,12 +12921,7 @@ export namespace Prisma {
     lte?: number | FloatFieldRefInput<$PrismaModel>
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
@@ -12990,6 +12997,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     loans?: LoanCreateNestedManyWithoutItemInput
     area?: AreaCreateNestedOneWithoutItemsInput
   }
@@ -13002,6 +13011,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     areaId?: string | null
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
   }
@@ -13099,7 +13110,9 @@ export namespace Prisma {
     amount?: IntNullableFilter<"Item"> | number | null
     manualUrl?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
-    price?: FloatNullableFilter<"Item"> | number | null
+    price?: IntNullableFilter<"Item"> | number | null
+    providerNumber?: StringNullableFilter<"Item"> | string | null
+    providerName?: StringNullableFilter<"Item"> | string | null
     inventoryId?: StringFilter<"Item"> | string
     areaId?: StringNullableFilter<"Item"> | string | null
   }
@@ -13163,6 +13176,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     loans?: LoanCreateNestedManyWithoutItemInput
   }
@@ -13175,6 +13190,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventoryId: string
     loans?: LoanUncheckedCreateNestedManyWithoutItemInput
   }
@@ -13404,6 +13421,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventory: InventoryCreateNestedOneWithoutItemsInput
     area?: AreaCreateNestedOneWithoutItemsInput
   }
@@ -13416,6 +13435,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventoryId: string
     areaId?: string | null
   }
@@ -13443,7 +13464,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
   }
@@ -13455,7 +13478,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -13769,6 +13794,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     areaId?: string | null
   }
 
@@ -13785,7 +13812,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     loans?: LoanUpdateManyWithoutItemNestedInput
     area?: AreaUpdateOneWithoutItemsNestedInput
   }
@@ -13797,7 +13826,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
   }
@@ -13809,7 +13840,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     areaId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -13841,6 +13874,8 @@ export namespace Prisma {
     manualUrl?: string | null
     createdAt?: Date | string
     price?: number | null
+    providerNumber?: string | null
+    providerName?: string | null
     inventoryId: string
   }
 
@@ -13851,7 +13886,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventory?: InventoryUpdateOneRequiredWithoutItemsNestedInput
     loans?: LoanUpdateManyWithoutItemNestedInput
   }
@@ -13863,7 +13900,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventoryId?: StringFieldUpdateOperationsInput | string
     loans?: LoanUncheckedUpdateManyWithoutItemNestedInput
   }
@@ -13875,7 +13914,9 @@ export namespace Prisma {
     amount?: NullableIntFieldUpdateOperationsInput | number | null
     manualUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    price?: NullableFloatFieldUpdateOperationsInput | number | null
+    price?: NullableIntFieldUpdateOperationsInput | number | null
+    providerNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    providerName?: NullableStringFieldUpdateOperationsInput | string | null
     inventoryId?: StringFieldUpdateOperationsInput | string
   }
 

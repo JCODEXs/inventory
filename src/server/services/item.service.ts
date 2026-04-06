@@ -13,6 +13,9 @@ export const itemService = {
     manualUrl?: string;
     areaId?: string;
     amount?: number;
+    price?: number;
+    providerName?: string;
+    providerNumber?: string;
   }) {
 
     // validar ownership del inventario

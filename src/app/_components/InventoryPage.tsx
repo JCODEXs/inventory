@@ -16,15 +16,15 @@ import { motion, AnimatePresence } from "framer-motion";
 // =========================
 type Loan = { id: string; borrowerName: string; borrowerContact?: string | null; startDate: Date; returned: boolean; };
 type Area = { id: string; name: string; createdAt?: Date; inventoryId?: string; };
-type ItemRaw = { id: string; name: string; description?: string | null; areaId?: string | null; loans: Loan[]; amount: number | null; };
-type ItemVM = { id: string; name: string; description?: string | null; isLoaned: boolean; activeLoan?: Loan; statusLabel: "Disponible" | "Prestado"; areaId: string | null; amount: number; };
+type ItemRaw = { id: string; name: string; description?: string | null; areaId?: string | null; loans: Loan[]; amount: number | null; price:number; providerName: string; providerNumber: string ; };
+type ItemVM = { id: string; name: string; description?: string | null; isLoaned: boolean; activeLoan?: Loan; statusLabel: "Disponible" | "Prestado"; areaId: string | null; amount: number; price:number; providerName: string; providerNumber: string ; };
 
 // =========================
 // Mapper (Mantenido igual)
 // =========================
 function mapItemToVM(item: ItemRaw): ItemVM {
   const activeLoan = item.loans.find((l) => !l.returned);
-  return { id: item.id, name: item.name, description: item.description, areaId: item.areaId ?? null, isLoaned: !!activeLoan, activeLoan, statusLabel: activeLoan ? "Prestado" : "Disponible", amount: item.amount ?? 1, };
+  return { id: item.id, name: item.name, description: item.description, areaId: item.areaId ?? null, isLoaned: !!activeLoan, activeLoan, statusLabel: activeLoan ? "Prestado" : "Disponible", amount: item.amount ?? 1, price:item.price, providerName:item.providerName, providerNumber:item.providerNumber  };
 }
 
 // =========================
@@ -207,8 +207,13 @@ function ItemCard({ item, onLoan }: { item: ItemVM; onLoan: (id: string) => void
       <div className="space-y-1">
         <p className="font-medium text-gray-800">{item.name}</p>
         <div className="flex items-center gap-2">
+         { item?.price && <span className="text-xs bg-gray-50 px-2 py-0.5 rounded text-gray-500"> $ {item?.price} </span>}
           <span className="text-xs bg-gray-50 px-2 py-0.5 rounded text-gray-500">{item.amount} und</span>
           {item.isLoaned && (<span className="text-xs text-blue-500 font-medium">👤 {item.activeLoan?.borrowerName}</span>)}
+        </div>
+        <div className="flex flex-col items-start gap-2 m-2">
+         {item.providerName &&<span className="text-xs">Proveedor</span>}
+          {item.providerName && (<span className="text-xs text-blue-500 font-medium">👤 {item.providerName} {item?.providerNumber}</span>)}
         </div>
       </div>
       <div className="flex flex-col items-end gap-2">
@@ -227,19 +232,28 @@ function ItemCard({ item, onLoan }: { item: ItemVM; onLoan: (id: string) => void
 
 function CreateItemContent({ inventoryId, areas, onClose }: { inventoryId: string, areas: Area[], onClose: () => void }) {
   const [name, setName] = useState(""); const [areaId, setAreaId] = useState(""); const [amount, setAmount] = useState(1); const utils = api.useUtils();
+  const [price,setPrice]=useState(1)
+  const [providerName,setProviderName]=useState("")
+  const [providerNumber,setProviderNumber]=useState("")
   const create = api.item.create.useMutation({ onSettled: () => { utils.item.getByInventory.invalidate(); } });
 
   const handleSubmit = () => {
     
     sileo.success({ title: "Item Creado" });
-    create.mutate({ name, inventoryId, areaId: areaId || undefined, amount });
+    create.mutate({ name, inventoryId, areaId: areaId || undefined, amount, price, providerName, providerNumber  });
     onClose();
   };
 
   return (
     <div className="space-y-4">
       <input autoFocus value={name} onChange={(e) => setName(e.target.value)} placeholder="Nombre del objeto" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
-      <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
+      <span> Cantidad </span>
+     
+      <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} placeholder="Cantidad" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
+     <span> Precio</span>
+      <input type="number" value={price} onChange={(e) => setPrice(Number(e.target.value))} placeholder="Precio" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
+      <input type="text" value={providerName} onChange={(e) => setProviderName(e.target.value)} placeholder="Proveedor" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
+      <input type="text" value={providerNumber} onChange={(e) => setProviderNumber(e.target.value)} placeholder="Telefono Proveedor" className="w-full border-gray-100 border p-3 rounded-xl text-sm" />
       <select value={areaId} onChange={(e) => setAreaId(e.target.value)} className="w-full border-gray-100 border p-3 rounded-xl text-sm text-gray-500">
         <option value="">Sin área específica</option>
         {areas.map(a => <option key={a.id} value={a.id}>{a.name}</option>)}
